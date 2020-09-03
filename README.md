@@ -29,10 +29,10 @@ This example runs the login action, activates a namespace, and triggers the Okte
 
 ```yaml
 # File: .github/workflows/workflow.yml
-on:
-  pull_request:
-    branches:
-      - master
+on: 
+  pull_request: 
+    types:
+      - closed
 
 name: example
 
