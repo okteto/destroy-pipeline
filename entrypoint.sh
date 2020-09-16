@@ -9,5 +9,5 @@ if [ ! -z $namespace ]; then
 params="--namespace=$namespace"
 fi
 
-echo running: okteto delete pipeline --name "${name}" ${params} --wait
-okteto delete pipeline --name "${name}" ${params} --wait
+echo running: okteto pipeline destroy --name "${name}" ${params} --wait
+okteto pipeline destroy --name "${name}" ${params} --wait
