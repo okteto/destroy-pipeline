@@ -9,7 +9,7 @@ if [ ! -z $namespace ]; then
 params="--namespace=$namespace"
 fi
 
-if [[ ! -z "$OKTETO_CA_CERT" ]]; then
+if [ ! -z "$OKTETO_CA_CERT" ]; then
    echo "Custom certificate is provided"
    echo "$OKTETO_CA_CERT" > /usr/local/share/ca-certificates/okteto_ca_cert
    update-ca-certificates
