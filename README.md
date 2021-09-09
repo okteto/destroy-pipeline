@@ -44,22 +44,22 @@ jobs:
       uses: actions/checkout@master    
 
     - name: Login
-      uses: okteto/login@master
+      uses: okteto/login@latest
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
 
     - name: "Activate Namespace"
-      uses: okteto/namespace@master
+      uses: okteto/namespace@latest
       with:
         name: cindylopez
     
     - name: "Trigger the pipeline"
-      uses: okteto/pipeline@master
+      uses: okteto/pipeline@latest
       with:
         name: pr-${{ github.event.number }}
     
     - name: "Destroy the pipeline"
-      uses: okteto/destroy-pipeline@master
+      uses: okteto/destroy-pipeline@latest
       with:
         name: pr-${{ github.event.number }}
 ```
@@ -90,22 +90,22 @@ jobs:
        uses: actions/checkout@master    
 
      - name: Login
-       uses: okteto/login@master
+       uses: okteto/login@latest
        with:
          token: ${{ secrets.OKTETO_TOKEN }}
 
      - name: "Activate Namespace"
-       uses: okteto/namespace@master
+       uses: okteto/namespace@latest
        with:
          name: cindylopez
       
       - name: "Trigger the pipeline"
-        uses: okteto/pipeline@master
+        uses: okteto/pipeline@latest
         with:
           name: pr-${{ github.event.number }}
       
       - name: "Destroy the pipeline"
-        uses: okteto/destroy-pipeline@master
+        uses: okteto/destroy-pipeline@latest
         with:
           name: pr-${{ github.event.number }}
 ```
