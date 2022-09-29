@@ -25,7 +25,7 @@ The Okteto namespace to use. If not specified it will use the namespace specifie
 
 # Example usage
 
-This example runs the login action, activates a namespace, and triggers the Okteto pipeline and deletes it
+This example runs the context action, activates a namespace, and triggers the Okteto pipeline and deletes it
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -43,8 +43,8 @@ jobs:
     - name: checkout
       uses: actions/checkout@master    
 
-    - name: Login
-      uses: okteto/login@latest
+    - name: context
+      uses: okteto/context@latest
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
 
@@ -89,8 +89,8 @@ jobs:
      - name: checkout
        uses: actions/checkout@master    
 
-     - name: Login
-       uses: okteto/login@latest
+     - name: context
+       uses: okteto/context@latest
        with:
          token: ${{ secrets.OKTETO_TOKEN }}
 
