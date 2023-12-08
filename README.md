@@ -1,15 +1,13 @@
-# GitHub Actions for Okteto Cloud
+# GitHub Actions for Okteto
 
-## Automate your development workflows using Github Actions and Okteto Cloud
-GitHub Actions gives you the flexibility to build an automated software development workflows. With GitHub Actions for Okteto Cloud you can create workflows to build, deploy and update your applications in [Okteto Cloud](https://cloud.okteto.com).
+## Automate your development workflows using Github Actions and Okteto
+GitHub Actions gives you the flexibility to build automated software development workflows. With GitHub Actions for Okteto you can create workflows to build, deploy and update your applications in [Okteto](https://okteto.com).
 
-Get started today with a [free Okteto Cloud account](https://cloud.okteto.com)!
+Try Okteto for free for 30 days, no credit card required. [Start your 30-day trial now](https://www.okteto.com/free-trial/)!
 
 # Github Action for developers to delete Okteto Pipelines from a GitHub Actions workflow
 
-You can use this action to delete an [Okteto Pipeline](https://okteto.com/blog/cloud-based-development-environments/) based on Github events. 
-
-You can use this action to cleanup your CI/CD workflow in [Okteto Cloud](https://cloud.okteto.com).
+You can use this action to cleanup your CI/CD workflow in [Okteto](https://okteto.com).
 
 [This document](https://okteto.com/docs/tutorials/getting-started-with-pipelines/index.html) has more information on this workflow.
 
@@ -43,9 +41,10 @@ jobs:
     - name: checkout
       uses: actions/checkout@master    
 
-    - name: Login
-      uses: okteto/login@latest
+    - name: Context
+      uses: okteto/context@latest
       with:
+        url: https://okteto.example.com
         token: ${{ secrets.OKTETO_TOKEN }}
 
     - name: "Activate Namespace"
@@ -71,7 +70,7 @@ jobs:
 
  You can specify a custom certificate authority or a self-signed certificate by setting the `OKTETO_CA_CERT` environment variable. When this variable is set, the action will install the certificate in the container, and then execute the action. 
 
- Use this option if you're using a private Certificate Authority or a self-signed certificate in your [Okteto Enterprise](http://okteto.com/enterprise) instance.  We recommend that you store the certificate as an [encrypted secret](https://docs.github.com/en/actions/reference/encrypted-secrets), and that you define the environment variable for the entire job, instead of doing it on every step.
+ Use this option if you're using a private Certificate Authority or a self-signed certificate in your [Okteto SH](https://www.okteto.com/docs/self-hosted/) instance.  We recommend that you store the certificate as an [encrypted secret](https://docs.github.com/en/actions/reference/encrypted-secrets), and that you define the environment variable for the entire job, instead of doing it on every step.
 
 
  ```yaml
@@ -89,9 +88,10 @@ jobs:
      - name: checkout
        uses: actions/checkout@master    
 
-     - name: Login
-       uses: okteto/login@latest
+     - name: Context
+       uses: okteto/context@latest
        with:
+         url: https://okteto.example.com
          token: ${{ secrets.OKTETO_TOKEN }}
 
      - name: "Activate Namespace"
