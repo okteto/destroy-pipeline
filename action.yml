@@ -7,12 +7,16 @@ inputs:
   namespace: 
     description: 'If present, the namespace scope for this action. If not specified, it will use the current context'
     required: false
+  log-level:
+    description: "Log level string. Valid options are debug, info, warn, error"
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
     - ${{ inputs.name }}
     - ${{ inputs.namespace }}
+    - ${{ inputs.log-level }}
 branding:
   color: 'green'
   icon: 'settings'
