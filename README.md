@@ -21,6 +21,10 @@ The name of the pipeline.
 
 The Okteto namespace to use. If not specified it will use the namespace specified by the `namespace` action.
 
+### `log-level`
+
+Log level used. Supported values are: `debug`, `info`, `warn`, `error`. (defaults to warn)
+
 # Example usage
 
 This example runs the login action, activates a namespace, and triggers the Okteto pipeline and deletes it
