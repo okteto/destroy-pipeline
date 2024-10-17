@@ -4,6 +4,7 @@ set -e
 name=$1
 namespace=$2
 log_level=$3
+destroy_volumes=$4
 
 params=""
 if [ ! -z $namespace ]; then
@@ -26,6 +27,9 @@ if [ "${RUNNER_DEBUG}" = "1" ]; then
   log_level="--log-level debug"
 fi
 
+if [ "$destroy_volumes" = "true" ]; then
+  volume_flag="-v"
+fi
 
-echo running: okteto pipeline destroy $log_level --name "${name}" ${params} --wait
-okteto pipeline destroy $log_level --name "${name}" ${params} --wait
+echo running: okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag --wait
+okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag --wait
