@@ -5,6 +5,7 @@ name=$1
 namespace=$2
 log_level=$3
 destroy_volumes=$4
+dependencies=$5
 
 params=""
 if [ ! -z $namespace ]; then
@@ -31,5 +32,11 @@ if [ "$destroy_volumes" = "true" ]; then
   volume_flag="-v"
 fi
 
-echo running: okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag --wait
-okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag --wait
+if [ "$dependencies" = "true" ]; then
+  dependencies_flag="--dependencies"
+else
+  dependencies_flag="--dependencies=false"
+fi
+
+echo running: okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag $dependencies_flag --wait
+okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag $dependencies_flag --wait

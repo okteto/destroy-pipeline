@@ -14,6 +14,9 @@ inputs:
     description: "Set to true to destroy the persistent volumes created by the development environment"
     required: false
     default: 'false'
+  dependencies:
+    description: "Set to true to destroy the pipeline dependencies"
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -22,6 +25,7 @@ runs:
     - ${{ inputs.namespace }}
     - ${{ inputs.log-level }}
     - ${{ inputs.destroy-volumes }}
+    - ${{ inputs.dependencies }}
 branding:
   color: 'green'
   icon: 'settings'
