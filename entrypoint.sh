@@ -32,11 +32,12 @@ if [ "$destroy_volumes" = "true" ]; then
   volume_flag="-v"
 fi
 
-if [ "$dependencies" = "true" ]; then
-  dependencies_flag="--dependencies"
-else
+dependencies_flag=""
+if [ "$dependencies" = "false" ]; then
   dependencies_flag="--dependencies=false"
+elif [ "$dependencies" = "true" ]; then
+  dependencies_flag="--dependencies"
 fi
 
-echo running: okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag $dependencies_flag --wait
+echo running: okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag ${dependencies_flag} --wait
 okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag $dependencies_flag --wait
