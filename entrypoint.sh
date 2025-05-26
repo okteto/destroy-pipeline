@@ -19,25 +19,24 @@ if [ ! -z "$OKTETO_CA_CERT" ]; then
 fi
 
 if [ ! -z "$log_level" ]; then
-  log_level="--log-level ${log_level}"
+  params="${params} --log-level ${log_level}"
 fi
 
 # https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/enabling-debug-logging
 # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
 if [ "${RUNNER_DEBUG}" = "1" ]; then
-  log_level="--log-level debug"
+  params="${params} --log-level debug"
 fi
 
 if [ "$destroy_volumes" = "true" ]; then
-  volume_flag="-v"
+  params="${params} -v"
 fi
 
-dependencies_flag=""
 if [ "$dependencies" = "false" ]; then
-  dependencies_flag="--dependencies=false"
+  params="${params} --dependencies=false"
 elif [ "$dependencies" = "true" ]; then
-  dependencies_flag="--dependencies"
+  params="${params} --dependencies"
 fi
 
-echo running: okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag ${dependencies_flag} --wait
-okteto pipeline destroy $log_level --name "${name}" ${params} $volume_flag $dependencies_flag --wait
+echo running: okteto pipeline destroy --name "${name}" ${params} --wait
+okteto pipeline destroy --name "${name}" ${params} --wait
