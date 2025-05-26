@@ -18,15 +18,17 @@ if [ ! -z "$OKTETO_CA_CERT" ]; then
    update-ca-certificates
 fi
 
+loglevel=""
 if [ ! -z "$log_level" ]; then
-  params="${params} --log-level ${log_level}"
+  loglevel="--log-level ${log_level}"
 fi
 
 # https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/enabling-debug-logging
 # https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
 if [ "${RUNNER_DEBUG}" = "1" ]; then
-  params="${params} --log-level debug"
+  loglevel="--log-level debug"
 fi
+params="${params} ${loglevel}"
 
 if [ "$destroy_volumes" = "true" ]; then
   params="${params} -v"
