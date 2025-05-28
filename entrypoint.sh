@@ -6,6 +6,7 @@ namespace=$2
 log_level=$3
 destroy_volumes=$4
 dependencies=$5
+timeout=$6
 
 params=""
 if [ ! -z $namespace ]; then
@@ -38,6 +39,10 @@ if [ "$dependencies" = "false" ]; then
   params="${params} --dependencies=false"
 elif [ "$dependencies" = "true" ]; then
   params="${params} --dependencies"
+fi
+
+if [ ! -z "$timeout" ]; then
+  params="${params} --timeout=${timeout}"
 fi
 
 echo running: okteto pipeline destroy --name "${name}" ${params} --wait

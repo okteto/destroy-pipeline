@@ -17,6 +17,9 @@ inputs:
   dependencies:
     description: "Force destroy of repositories in the 'dependencies' section"
     required: false
+  timeout:
+    description: "Timeout duration in Golang format (e.g., '5m' for 5 minutes, '1h' for 1 hour)"
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -26,6 +29,7 @@ runs:
     - ${{ inputs.log-level }}
     - ${{ inputs.destroy-volumes }}
     - ${{ inputs.dependencies }}
+    - ${{ inputs.timeout }}
 branding:
   color: 'green'
   icon: 'settings'
