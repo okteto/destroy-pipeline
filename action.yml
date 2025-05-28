@@ -18,7 +18,7 @@ inputs:
     description: "Force destroy of repositories in the 'dependencies' section"
     required: false
   timeout:
-    description: "Timeout duration in Golang format (e.g., '5m' for 5 minutes, '1h' for 1 hour)"
+    description: "Timeout duration for the pipeline destroy operation. Values should contain a corresponding time unit e.g. 1s, 2m, 3h. If not specified it will use 5m."
     required: false
 runs:
   using: "docker"
