@@ -29,6 +29,10 @@ Log level used. Supported values are: `debug`, `info`, `warn`, `error`. (default
 
 Set to `true` to destroy the persistent volumes created by the development environment (defaults to `false`).
 
+### `timeout`
+
+Timeout duration for the pipeline destroy operation. Values should contain a corresponding time unit e.g. 1s, 2m, 3h. If not specified it will use 5m.
+
 # Example usage
 
 This example runs the login action, activates a namespace, and triggers the Okteto pipeline and deletes it
